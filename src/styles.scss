@@ -2,3 +2,9 @@
 
 html, body { height: 100%; }
 body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-grid-tile-content {
+    height: fit-content !important;
+    align-items:baseline !important;
+  
+  }

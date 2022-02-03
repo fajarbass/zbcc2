@@ -15,14 +15,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'frontendtest';
 
   studentTbl?: Student_Table[];
-  schoolTbl:any[]=[];
+  schoolTbl?:School[];
+  totalSchool:number = 0;
   schoolLs?: School[];
   correctorLs:any[]=[];
   schCorrLs: any[] = [];
 
 
   displayedColumns: string[] = ['students', 'school_origin', 'school_correcting', 'cross_corrector'];
+  displayedColumns2: string[] = ['schools', 'students', 'correction', 'diff'];
   dataSource = new MatTableDataSource<Student_Table>();
+  dataSource2 = new MatTableDataSource<School>();
 
   @ViewChild(MatPaginator, { static: false })
   paginator!: MatPaginator;
@@ -45,6 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource2.paginator = this.paginator;
 }
 
   getStudentTbl()
@@ -62,6 +66,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.apiSrvc.getSchTbl().subscribe(data => 
     {
       this.schoolTbl = data;
+      this.dataSource2.data = data;
+      this.totalSchool = data.length;
       console.log(data);
     });
   }
@@ -71,7 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.apiSrvc.getScList().subscribe(data=>
     {
       this.schoolLs = data;
-      console.log(data);
+      console.log(data.length);
     });
 
    

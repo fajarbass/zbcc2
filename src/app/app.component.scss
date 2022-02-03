@@ -1,8 +1,17 @@
+.container {
+  padding: 1rem;
+}
+
+.card {
+  width: 100%;
+  margin: 5px;
+}
+
 table {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  min-width: 500px;
+  // min-width: 500px;
 }
 th.mat-header-cell {
   text-align: left;
